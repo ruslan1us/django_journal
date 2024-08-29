@@ -1,0 +1,19 @@
+{% extends "journal/base.html" %}
+{% block content %}
+<h2>Journal Details</h2>
+<form method="post">
+   <div class="form-group">
+      {% csrf_token %}
+
+      <label for="title">Title:</label>
+      <p id="title" class="form-control">{{ journal.title }}</p>
+
+      <label for="description">Description:</label>
+      <p id="description" class="form-control" style="word-wrap: break-word; overflow-wrap: break-word; white-space: pre-wrap; height: fit-content;">{{ journal.description }}</p>
+
+      <a href="{% url 'journallist' %}" class="btn btn-secondary">Back to List</a>
+   </div>
+</form>
+<a href="{% url 'deletejournal' journal.id %}"><button class="btn btn-danger" >Delete</button></a>
+<a href="{% url 'updatejournal' journal.id %}"><button class="btn btn-primary" >Update</button></a>
+{% endblock %}
